@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif; /* Appliquer la police Quicksand */
+    background-color: #333;
+    color: #fff;
+    display: block; /* Changer le display pour permettre le positionnement du titre */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 50px; /* Ajouter une marge sur les côtés pour centrer le contenu */
+}
+
+.flight-board {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7); /* Ajouter un fond semi-transparent pour le texte */
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin-top: 100px; /* Ajouter une marge supérieure pour éviter le chevauchement avec le titre */
+}
+
+.title {
+    font-size: 3em;
+    color: yellow;
+    margin: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+}
+
+th {
+    font-size: 1.3em; /* Augmenter la taille de la police des entêtes */
+    text-transform: uppercase; /* Mettre les lettres en majuscules */
+    font-weight: bold; /* Mettre les lettres en gras */
+    text-align: left; /* Aligner les entêtes à gauche */
+}
+
+th:first-child, td:first-child,
+th:last-child, td:last-child,
+th:nth-child(3), td:nth-child(3),
+th:nth-child(4), td:nth-child(4) {
+    width: 1%; /* Limiter la largeur des colonnes spécifiques au contenu affiché */
+    white-space: nowrap; /* Empêcher le contenu de s'étendre */
+}
+
+td.flight span {
+    display: inline-block;
+    animation: flip 1s infinite;
+    transform-origin: 50% 50%;
+    animation-iteration-count: var(--iteration-count, 3);
+    background-color: #4d4d4d; /* Rendre les cases grises 10% plus foncées supplémentaires */
+    border: 1px solid black; /* Ajouter une bordure noire */
+    color: yellow; /* Mettre les lettres en jaune */
+    text-transform: uppercase; /* Mettre les lettres en majuscules */
+    width: 25px;
+
+}
+
+.flight {
+    font-size: 1.8em; /* Diminuer la taille de la police des vols */
+    margin: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.flight span {
+    animation: flip 1s infinite;
+    transform-origin: 50% 50%;
+    animation-iteration-count: var(--iteration-count, 3);
+    background-color: #4d4d4d; /* Rendre les cases grises 10% plus foncées supplémentaires */
+    border: 1px solid black; /* Ajouter une bordure noire */
+    text-transform: uppercase; /* Mettre les lettres en majuscules */
+    font-weight: bold; /* Mettre les lettres en gras */
+}
+
+@keyframes flip {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(180deg); }
+    100% { transform: rotateX(360deg); }
+}
+
+.flight::before, .flight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    z-index: 1;
+}
+
+.flight::before {
+    left: -100%;
+    animation: slide-in 2s forwards;
+}
+
+.flight::after {
+    right: -100%;
+    animation: slide-out 2s forwards;
+}
+
+@keyframes slide-in {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes slide-out {
+    to {
+        right: 100%;
+    }
+}
